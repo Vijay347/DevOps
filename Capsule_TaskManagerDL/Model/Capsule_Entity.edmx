@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TaskManager.dbo.Parent_Task' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Parent_Task">
+          <Property Name="Parent_ID" Type="int" />
+          <Property Name="Parent_Task" Type="varchar" MaxLength="500" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TaskManager.dbo.Project' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Project">
+          <Property Name="Project_ID" Type="int" />
+          <Property Name="Project" Type="varchar" MaxLength="500" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Priority" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TaskManager.dbo.Task' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Task">
+          <Property Name="Task_ID" Type="int" />
+          <Property Name="Parent_ID" Type="int" />
+          <Property Name="Task" Type="varchar" MaxLength="500" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Project_ID" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TaskManager.dbo.Users' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Users">
+          <Property Name="User_ID" Type="int" />
+          <Property Name="First_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Employee_ID" Type="int" />
+          <Property Name="Project_ID" Type="int" />
+          <Property Name="Task_ID" Type="int" />
+        </EntityType>-->
+        <Function Name="GET_PARENT_TASK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GET_PROJECT_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GET_TASK_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GET_USER_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="INSERT_PROJECT_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Project_ID" Type="int" Mode="In" />
+          <Parameter Name="Project" Type="varchar" Mode="In" />
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Priority" Type="int" Mode="In" />
+        </Function>
+        <Function Name="INSERT_TASK_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Task_ID" Type="int" Mode="In" />
+          <Parameter Name="Parent_ID" Type="int" Mode="In" />
+          <Parameter Name="Task" Type="varchar" Mode="In" />
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Priority" Type="int" Mode="In" />
+          <Parameter Name="Project_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="INSERT_USER_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_ID" Type="int" Mode="In" />
+          <Parameter Name="First_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Last_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+          <Parameter Name="Project_ID" Type="int" Mode="In" />
+          <Parameter Name="Task_ID" Type="int" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_END_TASK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Task_ID" Type="int" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="TaskManagerModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TaskManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TaskManagerEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GET_PARENT_TASK" ReturnType="Collection(TaskManagerModel.GET_PARENT_TASK_Result)" />
+          <FunctionImport Name="GET_PROJECT_DETAILS" ReturnType="Collection(TaskManagerModel.GET_PROJECT_DETAILS_Result)" />
+          <FunctionImport Name="GET_TASK_DETAILS" ReturnType="Collection(TaskManagerModel.GET_TASK_DETAILS_Result)" />
+          <FunctionImport Name="GET_USER_DETAILS" ReturnType="Collection(TaskManagerModel.GET_USER_DETAILS_Result)" />
+          <FunctionImport Name="INSERT_PROJECT_DETAILS">
+            <Parameter Name="Project_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Project" Mode="In" Type="String" />
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Priority" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_TASK_DETAILS">
+            <Parameter Name="Task_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Parent_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Task" Mode="In" Type="String" />
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Priority" Mode="In" Type="Int32" />
+            <Parameter Name="Project_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_USER_DETAILS">
+            <Parameter Name="User_ID" Mode="In" Type="Int32" />
+            <Parameter Name="First_Name" Mode="In" Type="String" />
+            <Parameter Name="Last_Name" Mode="In" Type="String" />
+            <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Project_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Task_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_END_TASK">
+            <Parameter Name="Task_ID" Mode="In" Type="Int32" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GET_PARENT_TASK_Result">
+          <Property Type="Int32" Name="Parent_ID" Nullable="true" />
+          <Property Type="String" Name="Parent_Task" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GET_PROJECT_DETAILS_Result">
+          <Property Type="Int32" Name="Project_ID" Nullable="true" />
+          <Property Type="String" Name="Project" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+          <Property Type="DateTime" Name="End_Date" Nullable="true" />
+          <Property Type="Int32" Name="Priority" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GET_TASK_DETAILS_Result">
+          <Property Type="Int32" Name="Task_ID" Nullable="true" />
+          <Property Type="Int32" Name="Parent_ID" Nullable="true" />
+          <Property Type="String" Name="Task" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+          <Property Type="DateTime" Name="End_Date" Nullable="true" />
+          <Property Type="Int32" Name="Priority" Nullable="true" />
+          <Property Type="Int32" Name="Project_ID" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GET_USER_DETAILS_Result">
+          <Property Type="Int32" Name="User_ID" Nullable="true" />
+          <Property Type="String" Name="First_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Employee_ID" Nullable="true" />
+          <Property Type="Int32" Name="Project_ID" Nullable="true" />
+          <Property Type="Int32" Name="Task_ID" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TaskManagerModelStoreContainer" CdmEntityContainer="TaskManagerEntities" >
+          <FunctionImportMapping FunctionImportName="GET_PARENT_TASK" FunctionName="TaskManagerModel.Store.GET_PARENT_TASK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.GET_PARENT_TASK_Result">
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="Parent_Task" ColumnName="Parent_Task" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_PROJECT_DETAILS" FunctionName="TaskManagerModel.Store.GET_PROJECT_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.GET_PROJECT_DETAILS_Result">
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_TASK_DETAILS" FunctionName="TaskManagerModel.Store.GET_TASK_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.GET_TASK_DETAILS_Result">
+                <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GET_USER_DETAILS" FunctionName="TaskManagerModel.Store.GET_USER_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.GET_USER_DETAILS_Result">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="INSERT_PROJECT_DETAILS" FunctionName="TaskManagerModel.Store.INSERT_PROJECT_DETAILS" />
+          <FunctionImportMapping FunctionImportName="INSERT_TASK_DETAILS" FunctionName="TaskManagerModel.Store.INSERT_TASK_DETAILS" />
+          <FunctionImportMapping FunctionImportName="INSERT_USER_DETAILS" FunctionName="TaskManagerModel.Store.INSERT_USER_DETAILS" />
+          <FunctionImportMapping FunctionImportName="UPDATE_END_TASK" FunctionName="TaskManagerModel.Store.UPDATE_END_TASK" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
